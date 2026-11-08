@@ -1,24 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lesson Store</title>
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-</head>
-<body>
-  <div id="app">
-    <h1>Lesson Store</h1>
-    <ul>
-      <li v-for="lesson in lessons" :key="lesson._id">
-        <h2>{{ lesson.subject }}</h2>
-        <p>Location: {{ lesson.location }}</p>
-        <p>Price: £{{ lesson.price }}</p>
-        <p>Spaces: {{ lesson.spaces }}</p>
-      </li>
-    </ul>
-  </div>
-
-  <script>
+<script>
     const { createApp } = Vue;
     createApp({
       data() {
@@ -27,7 +7,7 @@
         }
       },
       mounted() {
-        // 请求本地 Node.js 后端获取课程列表
+        // Fetch lessons from local Node.js backend
         fetch('http://localhost:3000/lessons')
           .then(res => res.json())
           .then(data => {
@@ -37,5 +17,3 @@
       }
     }).mount('#app');
   </script>
-</body>
-</html>
